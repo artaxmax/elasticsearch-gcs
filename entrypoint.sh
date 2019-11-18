@@ -6,7 +6,7 @@ run_as_other_user_if_needed() {
   else
     exec "${@}"
   fi
-  
+}
 
 [[ -f /usr/share/elasticsearch/config/elasticsearch.keystore ]] || (run_as_other_user_if_needed elasticsearch-keystore create)
 if ! (run_as_other_user_if_needed elasticsearch-keystore list | grep -q '^gcs.client.default.credentials_file$'); then
